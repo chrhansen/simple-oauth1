@@ -17,7 +17,45 @@ Currently URL's are set for LinkedIn API, but has been tested against Twitter an
 5. After successfull authentication, tap the "API Request" button to test an API get request. Currently it is set (in ViewController.m) to pull your LinkedIn profile or find an appropriate API call on your OAuth1.0a service provider.
 
 To use the authentication in your own project copy the classes in the "OAuth1" group to your project. Create a new OAuth1Controller object and run the method
-``` objective-c loginWithWebView:completion: ``` by providing a UIWebView to handle the authorization part where the user puts in his/her credentials. You have to have a strong reference to your OAuth1Controller object
-
+```loginWithWebView:completion:``` by providing a UIWebView to handle the authorization part where the user puts in his/her credentials. You have to have a strong reference to your OAuth1Controller object.
+```
+    LoginWebViewController *loginWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginWebViewController"];
+    
+    [self presentViewController:loginWebViewController
+                       animated:YES
+                     completion:
+     ^{
+         [self.oauth1Controller loginWithWebView:loginWebViewController.webView completion:^(NSDictionary *oauthTokens, NSError *error)
+          {
+              if (!error)
+              {
+                  // Store your tokens for later authenticating your later requests, consider storing the tokens in the Keychain
+                  
+                  self.oauthToken = oauthTokens[@"oauth_token"];
+                  self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
+                  
+                  self.accessTokenLabel.text = self.oauthToken;
+                  self.accessTokenSecretLabel.text = self.oauthTokenSecret;
+              }
+              else
+              {
+                  NSLog(@"Error authenticating: %@", error.localizedDescription);
+              }
+              [self dismissViewControllerAnimated:YES completion:
+               ^{
+                   self.oauth1Controller = nil;
+               }];
+          }];
+     }];
+```
 The files inside Crypto are standard files for creating the signature. 
 
+
+### Creator
+
+[Christian Hansen](http://github.com/christian-hansen)  
+[@chrhansen](https://twitter.com/chrhansen)
+
+## License
+
+Simple-oauth1 is available under the MIT license.

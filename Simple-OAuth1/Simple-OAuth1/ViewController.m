@@ -41,17 +41,15 @@
                        animated:YES
                      completion:
      ^{
-         self.oauth1Controller = [[OAuth1Controller alloc] init];
          [self.oauth1Controller loginWithWebView:loginWebViewController.webView completion:^(NSDictionary *oauthTokens, NSError *error)
           {
               if (!error)
               {
-                  NSLog(@"Authentication success: %@", oauthTokens);
-                  // Store your tokens for later authenticating your later requests
-                  // Consider storing the tokens in the Keychain
+                  // Store your tokens for later authenticating your later requests, consider storing the tokens in the Keychain
+                  
                   self.oauthToken = oauthTokens[@"oauth_token"];
                   self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
-                                    
+                  
                   self.accessTokenLabel.text = self.oauthToken;
                   self.accessTokenSecretLabel.text = self.oauthTokenSecret;
               }
@@ -67,6 +65,14 @@
      }];
 }
 
+
+- (OAuth1Controller *)oauth1Controller
+{
+    if (_oauth1Controller == nil) {
+        _oauth1Controller = [[OAuth1Controller alloc] init];
+    }
+    return _oauth1Controller;
+}
 
 
 - (IBAction)testRequest
