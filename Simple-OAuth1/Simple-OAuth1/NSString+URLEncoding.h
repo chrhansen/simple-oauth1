@@ -10,11 +10,7 @@
 
 @interface NSString (URLEncoding)
 
-- (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
 - (NSString *)utf8AndURLEncode;
-- (NSString *)URLDecodedString;
-+ (NSString *)getUUID;
 + (NSString *)getNonce;
-+ (NSString *)queryStringWithParameters:(NSDictionary *)parameters;
 
 @end

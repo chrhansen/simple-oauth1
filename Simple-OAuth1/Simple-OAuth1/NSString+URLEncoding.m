@@ -9,14 +9,7 @@
 #import "NSString+URLEncoding.h"
 
 @implementation NSString (URLEncoding)
--(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding
-{
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                 (CFStringRef)self,
-                                                                                 NULL,
-                                                                                 (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
-                                                                                 CFStringConvertNSStringEncodingToEncoding(encoding)));
-}
+
 
 - (NSString *)utf8AndURLEncode
 {
@@ -27,11 +20,6 @@
                                                                                  CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
 }
 
-- (NSString *)URLDecodedString
-{
-    NSString *result = [(NSString *)self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-    return [result stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-}
 
 + (NSString *)getUUID
 {
@@ -44,33 +32,9 @@
 
 + (NSString *)getNonce
 {
+    // uuid is simplified a bit, also the full uuid can be used as nonce
     NSString *uuid = [self getUUID];
-    return [[uuid substringToIndex:8] stringByReplacingOccurrencesOfString:@"-" withString:@""].lowercaseString;
-}
-
-+ (NSString *)queryStringWithParameters:(NSDictionary *)parameters
-{
-    NSString *queryString;
-    NSArray *sortedKeys = [parameters.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    if (sortedKeys == nil
-        || sortedKeys.count == 0)
-    {
-        return @"";
-    }
-    for (NSString *key in sortedKeys)
-    {
-        id value = parameters[key];
-        if (value && [value isKindOfClass:NSString.class])
-        {
-            if (!queryString)
-            {
-                queryString= @"?";
-            }
-            queryString = [queryString stringByAppendingFormat:@"%@=%@&", key, value];
-        }
-    }
-    queryString = [queryString substringToIndex:queryString.length-1];
-    return queryString;
+    return [[uuid substringToIndex:10] stringByReplacingOccurrencesOfString:@"-" withString:@""].lowercaseString;
 }
 
 @end
