@@ -1,0 +1,351 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E59D630A166AD77800349E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59D6309166AD77800349E68 /* UIKit.framework */; };
+		E59D630C166AD77800349E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59D630B166AD77800349E68 /* Foundation.framework */; };
+		E59D630E166AD77800349E68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59D630D166AD77800349E68 /* CoreGraphics.framework */; };
+		E59D6314166AD77800349E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E59D6312166AD77800349E68 /* InfoPlist.strings */; };
+		E59D6316166AD77800349E68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E59D6315166AD77800349E68 /* main.m */; };
+		E59D631A166AD77800349E68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E59D6319166AD77800349E68 /* AppDelegate.m */; };
+		E59D631C166AD77800349E68 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E59D631B166AD77800349E68 /* Default.png */; };
+		E59D631E166AD77800349E68 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E59D631D166AD77800349E68 /* Default@2x.png */; };
+		E59D6320166AD77800349E68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E59D631F166AD77800349E68 /* Default-568h@2x.png */; };
+		E59D6323166AD77800349E68 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E59D6321166AD77800349E68 /* MainStoryboard.storyboard */; };
+		E59D6326166AD77800349E68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59D6325166AD77800349E68 /* ViewController.m */; };
+		E59D6331166AD80600349E68 /* OAuth1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = E59D6330166AD80600349E68 /* OAuth1Controller.m */; };
+		E59D633A166AD83400349E68 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = E59D6334166AD83400349E68 /* Base64Transcoder.c */; };
+		E59D633B166AD83400349E68 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = E59D6336166AD83400349E68 /* hmac.c */; };
+		E59D633C166AD83400349E68 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = E59D6338166AD83400349E68 /* sha1.c */; };
+		E59D633F166AD8BB00349E68 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E59D633E166AD8BB00349E68 /* NSString+URLEncoding.m */; };
+		E59D6342166ADCAF00349E68 /* LoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59D6341166ADCAF00349E68 /* LoginWebViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E59D6305166AD77800349E68 /* Simple-OAuth1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple-OAuth1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E59D6309166AD77800349E68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E59D630B166AD77800349E68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E59D630D166AD77800349E68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E59D6311166AD77800349E68 /* Simple-OAuth1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Simple-OAuth1-Info.plist"; sourceTree = "<group>"; };
+		E59D6313166AD77800349E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E59D6315166AD77800349E68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E59D6317166AD77800349E68 /* Simple-OAuth1-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple-OAuth1-Prefix.pch"; sourceTree = "<group>"; };
+		E59D6318166AD77800349E68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E59D6319166AD77800349E68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E59D631B166AD77800349E68 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E59D631D166AD77800349E68 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E59D631F166AD77800349E68 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E59D6322166AD77800349E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		E59D6324166AD77800349E68 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E59D6325166AD77800349E68 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E59D632F166AD80600349E68 /* OAuth1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth1Controller.h; sourceTree = "<group>"; };
+		E59D6330166AD80600349E68 /* OAuth1Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth1Controller.m; sourceTree = "<group>"; };
+		E59D6334166AD83400349E68 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		E59D6335166AD83400349E68 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		E59D6336166AD83400349E68 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		E59D6337166AD83400349E68 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		E59D6338166AD83400349E68 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		E59D6339166AD83400349E68 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		E59D633D166AD8BB00349E68 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		E59D633E166AD8BB00349E68 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		E59D6340166ADCAF00349E68 /* LoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWebViewController.h; sourceTree = "<group>"; };
+		E59D6341166ADCAF00349E68 /* LoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWebViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E59D6302166AD77800349E68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E59D630A166AD77800349E68 /* UIKit.framework in Frameworks */,
+				E59D630C166AD77800349E68 /* Foundation.framework in Frameworks */,
+				E59D630E166AD77800349E68 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E59D62FA166AD77800349E68 = {
+			isa = PBXGroup;
+			children = (
+				E59D630F166AD77800349E68 /* Simple-OAuth1 */,
+				E59D6308166AD77800349E68 /* Frameworks */,
+				E59D6306166AD77800349E68 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E59D6306166AD77800349E68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E59D6305166AD77800349E68 /* Simple-OAuth1.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E59D6308166AD77800349E68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E59D6309166AD77800349E68 /* UIKit.framework */,
+				E59D630B166AD77800349E68 /* Foundation.framework */,
+				E59D630D166AD77800349E68 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E59D630F166AD77800349E68 /* Simple-OAuth1 */ = {
+			isa = PBXGroup;
+			children = (
+				E59D6318166AD77800349E68 /* AppDelegate.h */,
+				E59D6319166AD77800349E68 /* AppDelegate.m */,
+				E59D6321166AD77800349E68 /* MainStoryboard.storyboard */,
+				E59D6340166ADCAF00349E68 /* LoginWebViewController.h */,
+				E59D6341166ADCAF00349E68 /* LoginWebViewController.m */,
+				E59D6324166AD77800349E68 /* ViewController.h */,
+				E59D6325166AD77800349E68 /* ViewController.m */,
+				E59D6332166AD81100349E68 /* OAuth1 */,
+				E59D6310166AD77800349E68 /* Supporting Files */,
+			);
+			path = "Simple-OAuth1";
+			sourceTree = "<group>";
+		};
+		E59D6310166AD77800349E68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E59D6311166AD77800349E68 /* Simple-OAuth1-Info.plist */,
+				E59D6312166AD77800349E68 /* InfoPlist.strings */,
+				E59D6315166AD77800349E68 /* main.m */,
+				E59D6317166AD77800349E68 /* Simple-OAuth1-Prefix.pch */,
+				E59D631B166AD77800349E68 /* Default.png */,
+				E59D631D166AD77800349E68 /* Default@2x.png */,
+				E59D631F166AD77800349E68 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E59D6332166AD81100349E68 /* OAuth1 */ = {
+			isa = PBXGroup;
+			children = (
+				E59D6333166AD83400349E68 /* Crypto */,
+				E59D632F166AD80600349E68 /* OAuth1Controller.h */,
+				E59D6330166AD80600349E68 /* OAuth1Controller.m */,
+				E59D633D166AD8BB00349E68 /* NSString+URLEncoding.h */,
+				E59D633E166AD8BB00349E68 /* NSString+URLEncoding.m */,
+			);
+			name = OAuth1;
+			sourceTree = "<group>";
+		};
+		E59D6333166AD83400349E68 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				E59D6334166AD83400349E68 /* Base64Transcoder.c */,
+				E59D6335166AD83400349E68 /* Base64Transcoder.h */,
+				E59D6336166AD83400349E68 /* hmac.c */,
+				E59D6337166AD83400349E68 /* hmac.h */,
+				E59D6338166AD83400349E68 /* sha1.c */,
+				E59D6339166AD83400349E68 /* sha1.h */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E59D6304166AD77800349E68 /* Simple-OAuth1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E59D6329166AD77800349E68 /* Build configuration list for PBXNativeTarget "Simple-OAuth1" */;
+			buildPhases = (
+				E59D6301166AD77800349E68 /* Sources */,
+				E59D6302166AD77800349E68 /* Frameworks */,
+				E59D6303166AD77800349E68 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Simple-OAuth1";
+			productName = "Simple-OAuth1";
+			productReference = E59D6305166AD77800349E68 /* Simple-OAuth1.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E59D62FC166AD77800349E68 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Christian-Hansen";
+			};
+			buildConfigurationList = E59D62FF166AD77800349E68 /* Build configuration list for PBXProject "Simple-OAuth1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E59D62FA166AD77800349E68;
+			productRefGroup = E59D6306166AD77800349E68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E59D6304166AD77800349E68 /* Simple-OAuth1 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E59D6303166AD77800349E68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E59D6314166AD77800349E68 /* InfoPlist.strings in Resources */,
+				E59D631C166AD77800349E68 /* Default.png in Resources */,
+				E59D631E166AD77800349E68 /* Default@2x.png in Resources */,
+				E59D6320166AD77800349E68 /* Default-568h@2x.png in Resources */,
+				E59D6323166AD77800349E68 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E59D6301166AD77800349E68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E59D6316166AD77800349E68 /* main.m in Sources */,
+				E59D631A166AD77800349E68 /* AppDelegate.m in Sources */,
+				E59D6326166AD77800349E68 /* ViewController.m in Sources */,
+				E59D6331166AD80600349E68 /* OAuth1Controller.m in Sources */,
+				E59D633A166AD83400349E68 /* Base64Transcoder.c in Sources */,
+				E59D633B166AD83400349E68 /* hmac.c in Sources */,
+				E59D633C166AD83400349E68 /* sha1.c in Sources */,
+				E59D633F166AD8BB00349E68 /* NSString+URLEncoding.m in Sources */,
+				E59D6342166ADCAF00349E68 /* LoginWebViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E59D6312166AD77800349E68 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E59D6313166AD77800349E68 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E59D6321166AD77800349E68 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E59D6322166AD77800349E68 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E59D6327166AD77800349E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E59D6328166AD77800349E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E59D632A166AD77800349E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Simple-OAuth1/Simple-OAuth1-Prefix.pch";
+				INFOPLIST_FILE = "Simple-OAuth1/Simple-OAuth1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E59D632B166AD77800349E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Simple-OAuth1/Simple-OAuth1-Prefix.pch";
+				INFOPLIST_FILE = "Simple-OAuth1/Simple-OAuth1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E59D62FF166AD77800349E68 /* Build configuration list for PBXProject "Simple-OAuth1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E59D6327166AD77800349E68 /* Debug */,
+				E59D6328166AD77800349E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E59D6329166AD77800349E68 /* Build configuration list for PBXNativeTarget "Simple-OAuth1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E59D632A166AD77800349E68 /* Debug */,
+				E59D632B166AD77800349E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E59D62FC166AD77800349E68 /* Project object */;
+}
