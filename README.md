@@ -16,7 +16,8 @@ Currently URL's are set for LinkedIn API, but has been tested against Twitter an
 
 5. After successfull authentication, tap the "API Request" button to test an API get request. Currently it is set (in ViewController.m) to pull your LinkedIn profile or find an appropriate API call on your OAuth1.0a service provider.
 
-To use the authentication in your own project copy the classes in the "OAuth1" group to your project. Create a new OAuth1Controller object and run the method loginWithWebView:completion: by providing a UIWebView to handle the authorization part where the user puts in his/her credentials. You have to have a strong reference to your OAuth1Controller object
+To use the authentication in your own project copy the classes in the "OAuth1" group to your project. Create a new OAuth1Controller object and run the method
+``` objective-c loginWithWebView:completion: ``` by providing a UIWebView to handle the authorization part where the user puts in his/her credentials. You have to have a strong reference to your OAuth1Controller object
 
 The files inside Crypto are standard files for creating the signature. 
 
