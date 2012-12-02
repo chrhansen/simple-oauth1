@@ -14,14 +14,14 @@
 typedef void (^WebWiewDelegateHandler)(NSDictionary *oauthParams);
 
 #define OAUTH_CALLBACK       @"linkedin_oauth" //Sometimes this has to be the same as the registered app callback url 
-#define CONSUMER_KEY         @"YOUR-API-KEY"
-#define CONSUMER_SECRET      @"YOUR-API-SECRET"
+#define CONSUMER_KEY         @"YOUR CONSUMER KEY"
+#define CONSUMER_SECRET      @"YOUR CONSUMER SECRET"
 #define AUTH_URL             @"https://api.linkedin.com/uas/"
 #define REQUEST_TOKEN_URL    @"oauth/requestToken"
 #define AUTHENTICATE_URL     @"oauth/authorize"
 #define ACCESS_TOKEN_URL     @"oauth/accessToken"
 #define API_URL              @"http://api.linkedin.com/v1/"
-#define OAUTH_SCOPE_PARAM    @"r_fullprofile"
+#define OAUTH_SCOPE_PARAM    @"r_fullprofile rw_nus r_network"
 #define REQUEST_TOKEN_METHOD @"POST"
 #define ACCESS_TOKEN_METHOD  @"POST"
 

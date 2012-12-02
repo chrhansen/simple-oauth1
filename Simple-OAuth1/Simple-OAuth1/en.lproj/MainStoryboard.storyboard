@@ -30,7 +30,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiC-nQ-8il">
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="zd5-ig-I2o"/>
                                 </constraints>
@@ -39,13 +39,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-Xp-sTL">
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="i4J-YT-2AK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Access Token" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5M-Cl-itS">
                                 <constraints>
@@ -76,35 +77,35 @@
                                     <action selector="testRequest" destination="2" eventType="touchUpInside" id="iWI-bh-qNw"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FY0-GE-fiU">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="API Response goes here ..." translatesAutoresizingMaskIntoConstraints="NO" id="FY0-GE-fiU">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="205" id="a6d-TY-qhw"/>
-                                    <constraint firstAttribute="width" constant="310" id="f2E-kI-Q36"/>
+                                    <constraint firstAttribute="height" constant="171" id="WoY-a9-Wur"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bnN-nd-1Hn" firstAttribute="top" secondItem="3" secondAttribute="top" constant="28" id="590-fM-fwZ"/>
                             <constraint firstItem="NiC-nQ-8il" firstAttribute="top" secondItem="m5M-Cl-itS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8tO-c1-jyG"/>
                             <constraint firstItem="m5M-Cl-itS" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9uO-JS-ObE"/>
                             <constraint firstItem="tDb-se-4AO" firstAttribute="leading" secondItem="bnN-nd-1Hn" secondAttribute="leading" type="default" id="A3t-ta-jEI"/>
                             <constraint firstAttribute="trailing" secondItem="ZU0-Xp-sTL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="BDW-7a-O8y"/>
                             <constraint firstAttribute="trailing" secondItem="NiC-nQ-8il" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Hdd-GC-h3e"/>
                             <constraint firstItem="NiC-nQ-8il" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="IdF-8M-dew"/>
-                            <constraint firstItem="cGz-Jt-dOx" firstAttribute="top" secondItem="3" secondAttribute="top" constant="210" id="Lr5-va-EQo"/>
-                            <constraint firstItem="m5M-Cl-itS" firstAttribute="top" secondItem="3" secondAttribute="top" constant="144" id="MRb-DP-mvC"/>
+                            <constraint firstItem="m5M-Cl-itS" firstAttribute="top" secondItem="bnN-nd-1Hn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="LlL-L5-4Lx"/>
                             <constraint firstItem="ZU0-Xp-sTL" firstAttribute="top" secondItem="cGz-Jt-dOx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QPp-BL-1vL"/>
-                            <constraint firstItem="FY0-GE-fiU" firstAttribute="top" secondItem="tDb-se-4AO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="R6K-08-dkj"/>
-                            <constraint firstItem="tDb-se-4AO" firstAttribute="centerX" secondItem="FY0-GE-fiU" secondAttribute="centerX" type="default" id="YdX-oD-xdE"/>
                             <constraint firstItem="bnN-nd-1Hn" firstAttribute="trailing" secondItem="tDb-se-4AO" secondAttribute="trailing" type="default" id="Yln-SZ-gnr"/>
                             <constraint firstItem="ZU0-Xp-sTL" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bVb-EH-POS"/>
-                            <constraint firstItem="tDb-se-4AO" firstAttribute="top" secondItem="ZU0-Xp-sTL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fdl-3S-YFm"/>
-                            <constraint firstItem="ZU0-Xp-sTL" firstAttribute="centerX" secondItem="tDb-se-4AO" secondAttribute="centerX" type="default" id="h0u-me-VAg"/>
-                            <constraint firstItem="bnN-nd-1Hn" firstAttribute="top" secondItem="3" secondAttribute="top" constant="65" id="pGZ-F5-zZz"/>
+                            <constraint firstItem="cGz-Jt-dOx" firstAttribute="top" secondItem="3" secondAttribute="top" constant="161" id="l9F-FO-j0A"/>
+                            <constraint firstItem="FY0-GE-fiU" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lPR-1k-GDE"/>
+                            <constraint firstAttribute="bottom" secondItem="tDb-se-4AO" secondAttribute="bottom" constant="206" id="ljv-2F-Bx0"/>
+                            <constraint firstAttribute="trailing" secondItem="FY0-GE-fiU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mjU-br-Fua"/>
+                            <constraint firstAttribute="bottom" secondItem="FY0-GE-fiU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="oEM-aw-RZA"/>
                             <constraint firstItem="cGz-Jt-dOx" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xGa-uG-u0Y"/>
+                            <constraint firstItem="NiC-nQ-8il" firstAttribute="centerX" secondItem="bnN-nd-1Hn" secondAttribute="centerX" type="default" id="xPs-IM-tSm"/>
                             <constraint firstItem="cGz-Jt-dOx" firstAttribute="trailing" secondItem="m5M-Cl-itS" secondAttribute="trailing" type="default" id="xmZ-QY-Yrz"/>
                         </constraints>
                     </view>
