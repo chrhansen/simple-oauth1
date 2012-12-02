@@ -1,7 +1,7 @@
 simple-oauth1
 =============
 
-Simple code for authenticating with OAuth 1.0a service providers
+#### Simple code for authenticating with OAuth 1.0a service providers
 Build using blocks on iOS 6 with ARC.
 
 AFNetworking (https://github.com/AFNetworking/AFNetworking) have some awesome methods for handling url parameters, which has been used in the project. Also a nice oauth signature method from OAuthConsumer (http://code.google.com/p/oauthconsumer/) has been used.
@@ -31,11 +31,8 @@ To use the authentication in your own project copy the classes in the "OAuth1" g
               {
                   // Store your tokens for later authenticating your later requests, consider storing the tokens in the Keychain
                   
-                  self.oauthToken = oauthTokens[@"oauth_token"];
-                  self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
-                  
-                  self.accessTokenLabel.text = self.oauthToken;
-                  self.accessTokenSecretLabel.text = self.oauthTokenSecret;
+                  NSLog(@"Success: %@", oauthTokens);
+
               }
               else
               {
