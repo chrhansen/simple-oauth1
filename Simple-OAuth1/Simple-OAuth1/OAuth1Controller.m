@@ -160,7 +160,7 @@ static inline NSDictionary *AFParametersFromQueryString(NSString *queryString)
     self.webView.delegate = self;
     
     self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    self.loadingIndicator.color = [UIColor blackColor];
+    self.loadingIndicator.color = [UIColor grayColor];
     [self.loadingIndicator startAnimating];
     self.loadingIndicator.center = self.webView.center;
     [self.webView addSubview:self.loadingIndicator];
