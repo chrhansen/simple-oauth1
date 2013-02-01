@@ -13,15 +13,27 @@
 
 typedef void (^WebWiewDelegateHandler)(NSDictionary *oauthParams);
 
-#define OAUTH_CALLBACK       @"linkedin_oauth" //Sometimes this has to be the same as the registered app callback url 
-#define CONSUMER_KEY         @"YOUR CONSUMER KEY"
-#define CONSUMER_SECRET      @"YOUR CONSUMER SECRET"
-#define AUTH_URL             @"https://api.linkedin.com/uas/"
-#define REQUEST_TOKEN_URL    @"oauth/requestToken"
-#define AUTHENTICATE_URL     @"oauth/authorize"
-#define ACCESS_TOKEN_URL     @"oauth/accessToken"
-#define API_URL              @"http://api.linkedin.com/v1/"
-#define OAUTH_SCOPE_PARAM    @"r_fullprofile rw_nus r_network"
+#define OAUTH_CALLBACK       @"tumblr_test" //Sometimes this has to be the same as the registered app callback url 
+#define CONSUMER_KEY         @"YOUR_CONSUMER_KEY"
+#define CONSUMER_SECRET      @"YOUR_CONSUMER_SECRET"
+#define AUTH_URL             @"http://www.tumblr.com/oauth/"
+#define REQUEST_TOKEN_URL    @"request_token"
+#define AUTHENTICATE_URL     @"authorize"
+#define ACCESS_TOKEN_URL     @"access_token"
+#define API_URL              @"http://api.tumblr.com/v2/"
+#define OAUTH_SCOPE_PARAM    @""
+
+//#define OAUTH_CALLBACK       @"linkedin_oauth" //Sometimes this has to be the same as the registered app callback url
+//#define CONSUMER_KEY         @"YOUR_CONSUMER_KEY"
+//#define CONSUMER_SECRET      @"YOUR_CONSUMER_SECRET"
+//#define AUTH_URL             @"https://api.linkedin.com/uas/"
+//#define REQUEST_TOKEN_URL    @"oauth/requestToken"
+//#define AUTHENTICATE_URL     @"oauth/authorize"
+//#define ACCESS_TOKEN_URL     @"oauth/accessToken"
+//#define API_URL              @"http://api.linkedin.com/v1/"
+//#define OAUTH_SCOPE_PARAM    @"r_fullprofile r_emailaddress rw_nus r_network w_messages"
+
+
 #define REQUEST_TOKEN_METHOD @"POST"
 #define ACCESS_TOKEN_METHOD  @"POST"
 
@@ -363,31 +375,30 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 
 
 #pragma mark buil authorized API-requests
-+ (NSMutableURLRequest *)preparedRequestForPath:(NSString *)path
-                                     parameters:(NSDictionary *)queryParameters
-                                     HTTPmethod:(NSString *)HTTPmethod
-                                     oauthToken:(NSString *)oauth_token
-                                    oauthSecret:(NSString *)oauth_token_secret
++ (NSURLRequest *)preparedRequestForPath:(NSString *)path
+                              parameters:(NSDictionary *)queryParameters
+                              HTTPmethod:(NSString *)HTTPmethod
+                              oauthToken:(NSString *)oauth_token
+                             oauthSecret:(NSString *)oauth_token_secret
 {
-    if (!HTTPmethod) return nil;
+    if (!HTTPmethod
+        || !oauth_token) return nil;
+    
+    NSMutableDictionary *allParameters = [self standardOauthParameters];
+    allParameters[@"oauth_token"] = oauth_token;
+    if (queryParameters) [allParameters addEntriesFromDictionary:queryParameters];
+    
+    NSString *parametersString = CHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
     
     NSString *request_url = API_URL;
     if (path) request_url = [request_url stringByAppendingString:path];
-    NSString *queryString;
-    NSMutableDictionary *allParameters = [self standardOauthParameters];
-    [allParameters setValue:oauth_token forKey:@"oauth_token"];
-    ;    if (queryParameters)
-    {
-        [allParameters addEntriesFromDictionary:queryParameters];
-    }
-    NSString *parametersString = CHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
-    
     NSString *oauth_consumer_secret = CONSUMER_SECRET;
     NSString *baseString = [HTTPmethod stringByAppendingFormat:@"&%@&%@", request_url.utf8AndURLEncode, parametersString.utf8AndURLEncode];
     NSString *secretString = [oauth_consumer_secret.utf8AndURLEncode stringByAppendingFormat:@"&%@", oauth_token_secret.utf8AndURLEncode];
     NSString *oauth_signature = [self.class signClearText:baseString withSecret:secretString];
-    [allParameters setValue:oauth_signature forKey:@"oauth_signature"];
+    allParameters[@"oauth_signature"] = oauth_signature;
     
+    NSString *queryString;
     if (queryParameters) queryString = CHQueryStringFromParametersWithEncoding(queryParameters, NSUTF8StringEncoding);
     if (queryString) request_url = [request_url stringByAppendingFormat:@"?%@", queryString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:request_url]];
@@ -395,13 +406,17 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     
     NSMutableArray *parameterPairs = [NSMutableArray array];
     [allParameters removeObjectsForKeys:queryParameters.allKeys];
-    for (NSString *name in allParameters)
-    {
+    for (NSString *name in allParameters) {
         NSString *aPair = [name stringByAppendingFormat:@"=\"%@\"", [allParameters[name] utf8AndURLEncode]];
         [parameterPairs addObject:aPair];
     }
     NSString *oAuthHeader = [@"OAuth " stringByAppendingFormat:@"%@", [parameterPairs componentsJoinedByString:@", "]];
     [request setValue:oAuthHeader forHTTPHeaderField:@"Authorization"];
+    if ([HTTPmethod isEqualToString:@"POST"]
+        && queryParameters != nil) {
+        NSData *body = [queryString dataUsingEncoding:NSUTF8StringEncoding];
+        [request setHTTPBody:body];
+    }
     return request;
 }
 
