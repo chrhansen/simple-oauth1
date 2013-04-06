@@ -42,7 +42,7 @@
                      completion:^{
                          [self.oauth1Controller loginWithWebView:loginWebViewController.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
                              if (!error) {
-                                 // Store your tokens for later authenticating your later requests, consider storing the tokens in the Keychain
+                                 // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
                                  self.oauthToken = oauthTokens[@"oauth_token"];
                                  self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
                                  
