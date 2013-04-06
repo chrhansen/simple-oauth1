@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -14,11 +14,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnN-nd-1Hn">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="doC-5z-dkH"/>
+                                    <constraint firstAttribute="width" constant="279" id="bDM-DF-dlM"/>
                                     <constraint firstAttribute="height" constant="59" id="r97-xa-6c1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="OAuth Login">
+                                <state key="normal" title="OAuth Login (tap me first)">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -29,7 +29,7 @@
                                     <action selector="loginTapped:" destination="2" eventType="touchUpInside" id="LlN-mK-hgv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiC-nQ-8il">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NiC-nQ-8il">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="zd5-ig-I2o"/>
@@ -38,7 +38,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-Xp-sTL">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-Xp-sTL">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="i4J-YT-2AK"/>
@@ -64,7 +64,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDb-se-4AO">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="4OR-xN-DyW"/>
-                                    <constraint firstAttribute="height" constant="49" id="aDQ-Mi-ZT9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="GET Request">
@@ -81,6 +80,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OS3-aC-SLv">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="bC8-Zv-f7k"/>
+                                    <constraint firstAttribute="height" constant="49" id="zj9-Of-AGX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="POST Request">
@@ -96,35 +96,42 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="API Response goes here ..." translatesAutoresizingMaskIntoConstraints="NO" id="FY0-GE-fiU">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="171" id="WoY-a9-Wur"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="pLM-w2-AhO">
+                                <string key="text">Tap "OAuth Login" above, OAuth login is successful when you haven an access-token and an access-token-secret. These can be used again and again to sign regular API requests (below).</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bnN-nd-1Hn" firstAttribute="top" secondItem="3" secondAttribute="top" constant="28" id="590-fM-fwZ"/>
-                            <constraint firstItem="NiC-nQ-8il" firstAttribute="top" secondItem="m5M-Cl-itS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8tO-c1-jyG"/>
+                            <constraint firstItem="NiC-nQ-8il" firstAttribute="trailing" secondItem="bnN-nd-1Hn" secondAttribute="trailing" type="default" id="0EP-iA-ke7"/>
+                            <constraint firstItem="ZU0-Xp-sTL" firstAttribute="trailing" secondItem="pLM-w2-AhO" secondAttribute="trailing" type="default" id="8cX-3L-4ff"/>
+                            <constraint firstItem="FY0-GE-fiU" firstAttribute="top" secondItem="tDb-se-4AO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8or-aB-khA"/>
+                            <constraint firstItem="pLM-w2-AhO" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8q8-dP-CCn"/>
                             <constraint firstItem="m5M-Cl-itS" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9uO-JS-ObE"/>
-                            <constraint firstAttribute="trailing" secondItem="ZU0-Xp-sTL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="BDW-7a-O8y"/>
-                            <constraint firstAttribute="trailing" secondItem="OS3-aC-SLv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="DJZ-bB-wef"/>
-                            <constraint firstAttribute="trailing" secondItem="NiC-nQ-8il" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Hdd-GC-h3e"/>
+                            <constraint firstItem="OS3-aC-SLv" firstAttribute="trailing" secondItem="pLM-w2-AhO" secondAttribute="trailing" type="default" id="Ffk-av-rF6"/>
+                            <constraint firstItem="pLM-w2-AhO" firstAttribute="top" secondItem="3" secondAttribute="top" constant="213" id="IEZ-i5-NpI"/>
                             <constraint firstItem="NiC-nQ-8il" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="IdF-8M-dew"/>
-                            <constraint firstItem="m5M-Cl-itS" firstAttribute="top" secondItem="bnN-nd-1Hn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="LlL-L5-4Lx"/>
-                            <constraint firstItem="OS3-aC-SLv" firstAttribute="top" secondItem="tDb-se-4AO" secondAttribute="top" type="default" id="M69-qc-r5a"/>
-                            <constraint firstItem="ZU0-Xp-sTL" firstAttribute="top" secondItem="cGz-Jt-dOx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QPp-BL-1vL"/>
+                            <constraint firstItem="m5M-Cl-itS" firstAttribute="top" secondItem="3" secondAttribute="top" constant="101" id="Is4-Ub-dVW"/>
+                            <constraint firstItem="OS3-aC-SLv" firstAttribute="top" secondItem="tDb-se-4AO" secondAttribute="top" type="default" id="LlQ-89-iPt"/>
+                            <constraint firstItem="cGz-Jt-dOx" firstAttribute="top" secondItem="NiC-nQ-8il" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NRp-1h-e3q"/>
+                            <constraint firstItem="bnN-nd-1Hn" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aaa-Sj-Uhv"/>
+                            <constraint firstItem="FY0-GE-fiU" firstAttribute="top" secondItem="OS3-aC-SLv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="arf-fY-5h9"/>
+                            <constraint firstItem="OS3-aC-SLv" firstAttribute="trailing" secondItem="FY0-GE-fiU" secondAttribute="trailing" type="default" id="bUv-Lq-ocd"/>
                             <constraint firstItem="ZU0-Xp-sTL" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bVb-EH-POS"/>
-                            <constraint firstItem="FY0-GE-fiU" firstAttribute="top" secondItem="OS3-aC-SLv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fhC-Bu-nrM"/>
-                            <constraint firstItem="FY0-GE-fiU" firstAttribute="top" secondItem="tDb-se-4AO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gyY-WP-9RI"/>
-                            <constraint firstItem="cGz-Jt-dOx" firstAttribute="top" secondItem="3" secondAttribute="top" constant="161" id="l9F-FO-j0A"/>
+                            <constraint firstItem="ZU0-Xp-sTL" firstAttribute="top" secondItem="3" secondAttribute="top" constant="174" id="baI-Ku-w5p"/>
+                            <constraint firstItem="NiC-nQ-8il" firstAttribute="trailing" secondItem="ZU0-Xp-sTL" secondAttribute="trailing" type="default" id="fnQ-Lp-P1C"/>
+                            <constraint firstItem="bnN-nd-1Hn" firstAttribute="top" secondItem="3" secondAttribute="top" constant="28" id="gM6-xR-rUI"/>
+                            <constraint firstItem="NiC-nQ-8il" firstAttribute="top" secondItem="3" secondAttribute="top" constant="122" id="hIN-Y5-C9W"/>
                             <constraint firstItem="FY0-GE-fiU" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lPR-1k-GDE"/>
-                            <constraint firstAttribute="trailing" secondItem="FY0-GE-fiU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mjU-br-Fua"/>
                             <constraint firstAttribute="bottom" secondItem="FY0-GE-fiU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="oEM-aw-RZA"/>
+                            <constraint firstAttribute="bottom" secondItem="OS3-aC-SLv" secondAttribute="bottom" constant="165" id="ttO-ih-hJ8"/>
                             <constraint firstItem="tDb-se-4AO" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wCG-A0-pcO"/>
                             <constraint firstItem="cGz-Jt-dOx" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xGa-uG-u0Y"/>
-                            <constraint firstItem="NiC-nQ-8il" firstAttribute="centerX" secondItem="bnN-nd-1Hn" secondAttribute="centerX" type="default" id="xPs-IM-tSm"/>
                             <constraint firstItem="cGz-Jt-dOx" firstAttribute="trailing" secondItem="m5M-Cl-itS" secondAttribute="trailing" type="default" id="xmZ-QY-Yrz"/>
                         </constraints>
                     </view>
