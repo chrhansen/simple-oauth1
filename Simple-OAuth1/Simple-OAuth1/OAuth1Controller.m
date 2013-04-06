@@ -13,25 +13,29 @@
 
 typedef void (^WebWiewDelegateHandler)(NSDictionary *oauthParams);
 
-#define OAUTH_CALLBACK       @"tumblr_test" //Sometimes this has to be the same as the registered app callback url 
-#define CONSUMER_KEY         @"YOUR_CONSUMER_KEY"
-#define CONSUMER_SECRET      @"YOUR_CONSUMER_SECRET"
-#define AUTH_URL             @"http://www.tumblr.com/oauth/"
-#define REQUEST_TOKEN_URL    @"request_token"
-#define AUTHENTICATE_URL     @"authorize"
-#define ACCESS_TOKEN_URL     @"access_token"
-#define API_URL              @"http://api.tumblr.com/v2/"
-#define OAUTH_SCOPE_PARAM    @""
+// Go to: http://www.tumblr.com/oauth/apps and get your API keys 
 
-//#define OAUTH_CALLBACK       @"linkedin_oauth" //Sometimes this has to be the same as the registered app callback url
-//#define CONSUMER_KEY         @"YOUR_CONSUMER_KEY"
-//#define CONSUMER_SECRET      @"YOUR_CONSUMER_SECRET"
-//#define AUTH_URL             @"https://api.linkedin.com/uas/"
-//#define REQUEST_TOKEN_URL    @"oauth/requestToken"
-//#define AUTHENTICATE_URL     @"oauth/authorize"
-//#define ACCESS_TOKEN_URL     @"oauth/accessToken"
-//#define API_URL              @"http://api.linkedin.com/v1/"
-//#define OAUTH_SCOPE_PARAM    @"r_fullprofile r_emailaddress rw_nus r_network w_messages"
+//#define OAUTH_CALLBACK       @"tumblr_callback" //Sometimes this has to be the same as the registered app callback url
+//#define CONSUMER_KEY         @"OAuth consumer key"
+//#define CONSUMER_SECRET      @"OAuth consumer secret"
+//#define AUTH_URL             @"http://www.tumblr.com/oauth/"
+//#define REQUEST_TOKEN_URL    @"request_token"
+//#define AUTHENTICATE_URL     @"authorize"
+//#define ACCESS_TOKEN_URL     @"access_token"
+//#define API_URL              @"http://api.tumblr.com/v2/"
+//#define OAUTH_SCOPE_PARAM    @""
+
+// Go to: https://www.linkedin.com/secure/developer and get your API keys
+
+#define OAUTH_CALLBACK       @"linkedin_oauth" //Sometimes this has to be the same as the registered app callback url
+#define CONSUMER_KEY         @"API Key"
+#define CONSUMER_SECRET      @"Secret Key"
+#define AUTH_URL             @"https://api.linkedin.com/uas/"
+#define REQUEST_TOKEN_URL    @"oauth/requestToken"
+#define AUTHENTICATE_URL     @"oauth/authorize"
+#define ACCESS_TOKEN_URL     @"oauth/accessToken"
+#define API_URL              @"http://api.linkedin.com/v1/"
+#define OAUTH_SCOPE_PARAM    @"r_fullprofile r_emailaddress rw_nus r_network w_messages"
 
 
 #define REQUEST_TOKEN_METHOD @"POST"
@@ -156,12 +160,11 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 //--- The part above is from AFNetworking---
 
 @interface OAuth1Controller ()
-{
-    WebWiewDelegateHandler _delegateHandler;
-}
 
 @property (nonatomic, weak) UIWebView *webView;
 @property (nonatomic, strong) UIActivityIndicatorView *loadingIndicator;
+@property (nonatomic, strong) WebWiewDelegateHandler delegateHandler;
+
 @end
 
 @implementation OAuth1Controller
@@ -218,10 +221,8 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     NSString *oauth_consumer_secret = CONSUMER_SECRET;
     
     NSMutableDictionary *allParameters = [self.class standardOauthParameters];
-    if ([OAUTH_SCOPE_PARAM length] > 0)
-    {
-        [allParameters setValue:OAUTH_SCOPE_PARAM forKey:@"scope"];
-    }
+    if ([OAUTH_SCOPE_PARAM length] > 0) [allParameters setValue:OAUTH_SCOPE_PARAM forKey:@"scope"];
+
     NSString *parametersString = CHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
     
     NSString *baseString = [REQUEST_TOKEN_METHOD stringByAppendingFormat:@"&%@&%@", request_url.utf8AndURLEncode, parametersString.utf8AndURLEncode];
@@ -235,8 +236,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     request.HTTPMethod = REQUEST_TOKEN_METHOD;
     
     NSMutableArray *parameterPairs = [NSMutableArray array];
-    for (NSString *name in allParameters)
-    {
+    for (NSString *name in allParameters) {
         NSString *aPair = [name stringByAppendingFormat:@"=\"%@\"", [allParameters[name] utf8AndURLEncode]];
         [parameterPairs addObject:aPair];
     }
@@ -245,13 +245,10 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             NSString *reponseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-             completion(nil, CHParametersFromQueryString(reponseString));
-         });
-     }];
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               NSString *reponseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                               completion(nil, CHParametersFromQueryString(reponseString));
+                           }];
 }
 
 #pragma mark - Step 2 Show login to the user to authorize our app
@@ -265,49 +262,60 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:authenticate_url]];
     [request setValue:[NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey], (__bridge id)CFBundleGetValueForInfoDictionaryKey(CFBundleGetMainBundle(), kCFBundleVersionKey) ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey], [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemVersion], ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0f)] forHTTPHeaderField:@"User-Agent"];
     
-    _delegateHandler = ^(NSDictionary *oauthParams)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (oauthParams[@"oauth_verifier"] == nil)
-            {
-                NSError *authenticateError = [NSError errorWithDomain:@"com.ideaflasher.oauth.authenticate"
-                                                                 code:0
-                                                             userInfo:@{@"userInfo" : @"oauth_verifier not received and/or user denied access"}];
-                completion(authenticateError, oauthParams);
-            }
-            else
-            {
-                completion(nil, oauthParams);
-            }
-        });
+    _delegateHandler = ^(NSDictionary *oauthParams) {
+        if (oauthParams[@"oauth_verifier"] == nil) {
+            NSError *authenticateError = [NSError errorWithDomain:@"com.ideaflasher.oauth.authenticate" code:0 userInfo:@{@"userInfo" : @"oauth_verifier not received and/or user denied access"}];
+            completion(authenticateError, oauthParams);
+        } else {
+            completion(nil, oauthParams);
+        }
     };
     [self.webView loadRequest:request];
 }
 
+
+
+#pragma mark - Webview delegate
+#pragma mark Turn off spinner
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self.loadingIndicator removeFromSuperview];
     self.loadingIndicator = nil;
 }
 
-#pragma mark - Webview delegate used to detect call back in step 2
+#pragma mark Used to detect call back in step 2
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    if (_delegateHandler)
-    {
+    if (_delegateHandler) {
         // For other Oauth 1.0a service providers than LinkedIn, the call back URL might be part of the query of the URL (after the "?"). In this case use index 1 below. In any case NSLog the request URL after the user taps 'Allow'/'Authenticate' after he/she entered his/her username and password and see where in the URL the call back is. Note for some services the callback URL is set once on their website when registering an app, and the OAUTH_CALLBACK set here is ignored.
-
         NSString *urlWithoutQueryString = [request.URL.absoluteString componentsSeparatedByString:@"?"][0];
         if ([urlWithoutQueryString rangeOfString:OAUTH_CALLBACK].location != NSNotFound)
         {
             NSString *queryString = [request.URL.absoluteString substringFromIndex:[request.URL.absoluteString rangeOfString:@"?"].location + 1];
             NSDictionary *parameters = CHParametersFromQueryString(queryString);
+            parameters = [self removeAppendedSubstringOnVerifierIfPresent:parameters];
+            
             _delegateHandler(parameters);
             _delegateHandler = nil;
         }
     }
     return YES;
 }
+
+#define FacebookAndTumblrAppendedString @"#_=_"
+
+- (NSDictionary *)removeAppendedSubstringOnVerifierIfPresent:(NSDictionary *)parameters
+{
+    NSString *oauthVerifier = parameters[@"oauth_verifier"];
+    if ([oauthVerifier hasSuffix:FacebookAndTumblrAppendedString]
+        && [oauthVerifier length] > FacebookAndTumblrAppendedString.length) {
+        NSMutableDictionary *mutableParameters = parameters.mutableCopy;
+        mutableParameters[@"oauth_verifier"] = [oauthVerifier substringToIndex:oauthVerifier.length - FacebookAndTumblrAppendedString.length];
+        parameters = mutableParameters;
+    }
+    return parameters;
+}
+
 
 #pragma mark - Step 3 Request access token now that user has authorized the app
 - (void)requestAccessToken:(NSString *)oauth_token_secret
@@ -319,8 +327,8 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     NSString *oauth_consumer_secret = CONSUMER_SECRET;
     
     NSMutableDictionary *allParameters = [self.class standardOauthParameters];
-    [allParameters setValue:oauth_verifier         forKey:@"oauth_verifier"];
-    [allParameters setValue:oauth_token            forKey:@"oauth_token"];
+    [allParameters setValue:oauth_verifier forKey:@"oauth_verifier"];
+    [allParameters setValue:oauth_token    forKey:@"oauth_token"];
     
     NSString *parametersString = CHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
     
@@ -345,13 +353,10 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             NSString *reponseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-             completion(nil, CHParametersFromQueryString(reponseString));
-         });
-     }];
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                               completion(nil, CHParametersFromQueryString(responseString));
+                           }];
 }
 
 
@@ -374,7 +379,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 }
 
 
-#pragma mark buil authorized API-requests
+#pragma mark build authorized API-requests
 + (NSURLRequest *)preparedRequestForPath:(NSString *)path
                               parameters:(NSDictionary *)queryParameters
                               HTTPmethod:(NSString *)HTTPmethod
