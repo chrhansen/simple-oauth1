@@ -23,27 +23,23 @@ Copy the classes in the "OAuth1" group of the sample project to your project. Cr
 
 ``` objective-c
 LoginWebViewController *loginWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginWebViewController"];
-
-[self presentViewController:loginWebViewController animated:YES completion:
- ^{
-     [self.oauth1Controller loginWithWebView:loginWebViewController.webView completion:^(NSDictionary *oauthTokens, NSError *error)
-      {
-          if (!error)
-          {
-              // Store your tokens for later authenticating your later requests, consider storing the tokens in the Keychain
-              NSLog(@"Success: %@", oauthTokens);
-              
-          }
-          else
-          {
-              NSLog(@"Error authenticating: %@", error.localizedDescription);
-          }
-          [self dismissViewControllerAnimated:YES completion:
-           ^{
-               self.oauth1Controller = nil;
-           }];
-      }];
-}];
+[self presentViewController:loginWebViewController
+                   animated:YES
+                 completion:^{
+                     [self.oauth1Controller loginWithWebView:loginWebViewController.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
+                         if (!error) {
+                             // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
+                             NSLog(@"Success: %@", oauthTokens);
+                         }
+                         else
+                         {
+                             NSLog(@"Error authenticating: %@", error.localizedDescription);
+                         }
+                         [self dismissViewControllerAnimated:YES completion: ^{
+                             self.oauth1Controller = nil;
+                         }];
+                     }];
+                 }];
 ```
 The files inside Crypto are standard files for creating the signature. 
 
