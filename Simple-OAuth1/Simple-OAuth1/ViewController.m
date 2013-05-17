@@ -26,6 +26,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -33,7 +34,9 @@
 }
 
 
-- (IBAction)loginTapped:(id)sender
+
+
+- (IBAction)loginTapped
 {
     LoginWebViewController *loginWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginWebViewController"];
     
@@ -60,6 +63,27 @@
                      }];
 }
 
+
+- (IBAction)logoutTapped
+{
+    // Clear cookies so no session cookies can be used for the UIWebview 
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]) {
+        if (cookie.isSecure) {
+            NSLog(@"Cookie: %@", cookie);
+            [storage deleteCookie:cookie];
+        }
+    }
+    
+    // Clear tokens from instance variables
+    self.oauthToken = nil;
+    self.oauthTokenSecret = nil;
+    
+    // Clear textfields
+    self.accessTokenLabel.text = self.oauthToken;
+    self.accessTokenSecretLabel.text = self.oauthTokenSecret;
+    self.responseTextView.text = nil;
+}
 
 - (OAuth1Controller *)oauth1Controller
 {
