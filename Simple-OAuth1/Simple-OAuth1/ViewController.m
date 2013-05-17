@@ -70,7 +70,6 @@
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
         if (cookie.isSecure) {
-            NSLog(@"Cookie: %@", cookie);
             [storage deleteCookie:cookie];
         }
     }
