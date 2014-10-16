@@ -181,6 +181,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Christian-Hansen";
+				TargetAttributes = {
+					E59D6304166AD77800349E68 = {
+						DevelopmentTeam = FTMH872LU9;
+					};
+				};
 			};
 			buildConfigurationList = E59D62FF166AD77800349E68 /* Build configuration list for PBXProject "Simple-OAuth1" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -344,6 +349,7 @@
 				E59D632B166AD77800349E68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

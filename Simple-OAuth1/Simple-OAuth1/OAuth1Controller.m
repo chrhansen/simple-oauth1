@@ -362,7 +362,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 
 + (NSMutableDictionary *)standardOauthParameters
 {
-    NSString *oauth_timestamp = [NSString stringWithFormat:@"%i", (NSUInteger)[NSDate.date timeIntervalSince1970]];
+    NSString *oauth_timestamp = [NSString stringWithFormat:@"%lu", (unsigned long)[NSDate.date timeIntervalSince1970]];
     NSString *oauth_nonce = [NSString getNonce];
     NSString *oauth_consumer_key = CONSUMER_KEY;
     NSString *oauth_signature_method = @"HMAC-SHA1";
