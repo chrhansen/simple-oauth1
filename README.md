@@ -46,7 +46,7 @@ The files inside Crypto are standard files for creating the signature.
 
 ### Creator
 
-[Christian Hansen](http://github.com/christian-hansen)  
+[Christian Hansen](http://github.com/chrhansen)  
 [@chrhansen](https://twitter.com/chrhansen)
 
 ## License
